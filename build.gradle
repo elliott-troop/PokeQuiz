@@ -30,4 +30,6 @@ task clean(type: Delete) {
 ext {
     lifecycle_version = "2.2.0"
     timber_version = "4.7.1"
+    retrofit_version = "2.7.2"
+    okhttp_loggin_interceptor_version = "4.0.0"
 }
