@@ -1,4 +1,4 @@
-package com.elliottco.pokequiz
+package com.elliottco.pokequiz.ui
 
 import android.app.Activity
 import android.content.Context
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.elliottco.pokequiz.R
 
 // Set with package name to avoid name collisions from other apps
 const val EXTRA_ANSWER_IS_TRUE = "com.elliottco.pokequiz.answer_is_true"

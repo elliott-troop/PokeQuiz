@@ -8,4 +8,5 @@ import dagger.hilt.android.components.ApplicationComponent
 @InstallIn(ApplicationComponent::class)
 class ApplicationModule {
 
+
 }
