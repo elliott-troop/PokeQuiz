@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">PokeQuiz</string>
+    <string name="button_true_text">True</string>
+    <string name="button_false_text">False</string>
+    <string name="toast_correct_text">Correct</string>
+    <string name="toast_incorrect_text">Incorrect</string>
+
+    <string name="pokemon_question_one">Gyarados is a Dragon type Pokemon.</string>
+    <string name="pokemon_question_two">Rhyhorn is the Pokemon used for gym statues.</string>
+    <string name="pokemon_question_three">Dark type Pokemon are weak to Bug type Pokemon.</string>
+    <string name="pokemon_question_four">The Gastly evolution line are the only Ghost type Pokemon in Gen 1.</string>
+    <string name="pokemon_question_five">Chansey can be caught outsize of the Safari Zone in Gen 1.</string>
+    <string name="pokemon_question_six">Deoxys has 4 forms in total.</string>
+
+    <string name="warning_text">Are you sure you want to do this?</string>
+    <string name="button_show_answer">Show Answer</string>
+    <string name="button_cheat">Cheat!</string>
+    <string name="toast_judgemental">Cheating is wrong.</string>
+    <string name="toast_always_cheater">Once a cheater, always a cheater.</string>
+</resources>
