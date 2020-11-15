@@ -1,16 +1,18 @@
-package com.elliottco.pokequiz
+package com.elliottco.pokequiz.ui
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.View
 import android.widget.*
-import androidx.lifecycle.ViewModelProvider
-import com.elliottco.pokequiz.model.Question
+import androidx.activity.viewModels
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.elliottco.pokequiz.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     companion object {
@@ -26,9 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nextButton: ImageButton
     private lateinit var pokemonImage: ImageView
 
-    private val pokeQuizViewModel: PokeQuizViewModel by lazy {
-        ViewModelProvider(this).get(PokeQuizViewModel::class.java)
-    }
+    private val pokeQuizViewModel by viewModels<PokeQuizViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,7 +82,8 @@ class MainActivity : AppCompatActivity() {
 
         if(requestCode == REQUEST_CODE_CHEAT) {
             pokeQuizViewModel.isCheater = data?.getBooleanExtra(EXTRA_ANSWER_IS_SHOWN, false) ?: false
-            pokeQuizViewModel.hasCheatedMap[pokeQuizViewModel.currentIndex] = data?.getBooleanExtra(EXTRA_ANSWER_IS_SHOWN, false) ?: false
+            pokeQuizViewModel.hasCheatedMap[pokeQuizViewModel.currentIndex] = data?.getBooleanExtra(
+                EXTRA_ANSWER_IS_SHOWN, false) ?: false
         }
     }
 
@@ -98,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         val messageResId = when {
             pokeQuizViewModel.isCheater -> R.string.toast_judgemental
             (hasCheated != null && hasCheated) -> R.string.toast_always_cheater
-            answer == pokeQuizViewModel.currentQuestionAnswer -> R.string.toast_correct_text
+            answer == pokeQuizViewModel.currentPokemonQuestionAnswer -> R.string.toast_correct_text
             else -> R.string.toast_incorrect_text
         }
 
@@ -110,8 +111,16 @@ class MainActivity : AppCompatActivity() {
      */
     private fun updateUi() {
 
-        questionText.setText(pokeQuizViewModel.currentQuestionResId)
-        pokemonImage.setImageResource(pokeQuizViewModel.currentQuestionImage)
+        questionText.setText(pokeQuizViewModel.currentPokemonQuestionResId)
+
+        val imagePath = "https://pokeres.bastionbot.org/images/pokemon/${pokeQuizViewModel.currentPokemonQuestionPokedexNumber}.png"
+
+        Glide.with(applicationContext)
+            .applyDefaultRequestOptions(RequestOptions()
+                .error(R.drawable.ic_pokeball))
+            .load(imagePath)
+            .into(pokemonImage)
+//        pokemonImage.setImageResource(pokeQuizViewModel.currentQuestionImage)
 
         if(pokeQuizViewModel.hidePreviousButton())
             previousButton.visibility = View.GONE
@@ -128,7 +137,7 @@ class MainActivity : AppCompatActivity() {
      * Start the Cheat Activity
      */
     private fun startCheatActivity() {
-        val answerIsTrue = pokeQuizViewModel.currentQuestionAnswer
+        val answerIsTrue = pokeQuizViewModel.currentPokemonQuestionAnswer
         val intent = CheatActivity.newIntent(this, answerIsTrue)
         startActivityForResult(intent, REQUEST_CODE_CHEAT)
     }

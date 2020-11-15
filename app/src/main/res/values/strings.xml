@@ -7,10 +7,12 @@
 
     <string name="pokemon_question_one">Gyarados is a Dragon type Pokemon.</string>
     <string name="pokemon_question_two">Rhyhorn is the Pokemon used for gym statues.</string>
-    <string name="pokemon_question_three">Dark type Pokemon are weak to Bug type Pokemon.</string>
+    <string name="pokemon_question_three">Electabuzz evolves in Gen 3.</string>
     <string name="pokemon_question_four">The Gastly evolution line are the only Ghost type Pokemon in Gen 1.</string>
     <string name="pokemon_question_five">Chansey can be caught outsize of the Safari Zone in Gen 1.</string>
     <string name="pokemon_question_six">Deoxys has 4 forms in total.</string>
+    <string name="pokemon_question_seven">Lickitung couldn\'t actually learn the move Lick in Gen 1.</string>
+    <string name="pokemon_question_eight">Ivysaur evolves at level 36.</string>
 
     <string name="warning_text">Are you sure you want to do this?</string>
     <string name="button_show_answer">Show Answer</string>
